@@ -1,0 +1,17 @@
+<h1> Create a new player! </h1>
+
+<%= form_for(@player) do |f| %>
+
+<% if flash[:error] %>
+<% flash[:error].each do |error| %>
+<b>* <%= error %></b><p>
+<% end %>
+<% end %>
+<p>
+
+<div class="field">
+<%= f.label :name %>
+<%= f.text_field :name %><p>
+</div>
+<%= f.submit %>
+<% end %>
