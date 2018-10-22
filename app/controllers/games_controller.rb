@@ -2,6 +2,7 @@ class GamesController < ApplicationController
 
   def index
     #@games = Game.all
+
   end
 
 
@@ -10,21 +11,21 @@ class GamesController < ApplicationController
   end
 
 
-  def new
-    @game = Game.new
-  end
+  # def new
+  #   #@game = Game.new
+  # end
 
 
   def create
-    @game = Game.create(game_params)
+    @game = Game.create
     redirect_to new_player_path
   end
 
 
-  private
-
-  def game_params
-    params.require(:game)#.permit()
-  end
+  # private
+  #
+  # def game_params
+  #   params.require(:game)#.permit()
+  # end
 
 end
