@@ -17,15 +17,15 @@ class GamesController < ApplicationController
 
 
   def create
-    @game = Game.create
+    @game = Game.create(game_params)
     redirect_to new_player_path
   end
 
 
-  # private
-  #
-  # def game_params
-  #   params.require(:game)#.permit()
-  # end
+  private
+
+  def game_params
+    params.require(:game)#.permit()
+  end
 
 end
