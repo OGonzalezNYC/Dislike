@@ -1,4 +1,4 @@
-class FalseStatement < ApplicationRecord
+class Statement < ApplicationRecord
   belongs_to :round
   belongs_to :player
 end

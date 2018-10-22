@@ -1,6 +1,6 @@
-class CreateTrueStatements < ActiveRecord::Migration[5.2]
+class CreateStatements < ActiveRecord::Migration[5.2]
   def change
-    create_table :true_statements do |t|
+    create_table :statements do |t|
       t.text :content
       t.boolean :answer
       t.integer :player_id

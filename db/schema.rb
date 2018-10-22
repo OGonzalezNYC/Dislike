@@ -10,16 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_22_154442) do
-
-  create_table "false_statements", force: :cascade do |t|
-    t.text "content"
-    t.boolean "answer"
-    t.integer "player_id"
-    t.integer "round_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 2018_10_22_154426) do
 
   create_table "games", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -39,7 +30,7 @@ ActiveRecord::Schema.define(version: 2018_10_22_154442) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "true_statements", force: :cascade do |t|
+  create_table "statements", force: :cascade do |t|
     t.text "content"
     t.boolean "answer"
     t.integer "player_id"
