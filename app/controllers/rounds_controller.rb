@@ -6,11 +6,13 @@ class RoundsController < ApplicationController
 
   def show
     @round = Round.find(params[:id])
-    @statements = Statement.all
+    @statements = @round.statements
   end
 
   def new
     @round = Round.new
+    @current_game = Game.current_game
+    @round_check = Game.round_check
   end
 
   def create

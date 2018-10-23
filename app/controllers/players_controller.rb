@@ -30,7 +30,7 @@ class PlayersController < ApplicationController
 
 
   def player_params
-    params.require(:player).permit(:name, :game_id)
+    params.require(:player).permit(:name, :game_id, :position)
   end
 
 end

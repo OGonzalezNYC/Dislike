@@ -1,12 +1,22 @@
 #show all players in the round
 #needs a start button to direct to statments form
 
-<%= form_for @round do |f| %>
-  <%= f.hidden_field :game_id, :value => Game.all.last.id %>
-  <%= f.submit "Start Game"%>
+<% if !@round_check %>
+  <%= form_for @round do |f| %>
+    <% if @current_game == 0 %>
+      <%= f.hidden_field :game_id, :value => Game.all.last.id %>
+      <%= f.submit "Start Game"%>
+    <% else %>
+      <%= f.hidden_field :game_id, :value => Game.all.last.id %>
+      <%= f.submit "Start New Round" %>
+    <% end %>
+  <% end %>
+  <% else %>
+<%= button_to "Start New Game", games_path, method: :get %>
 <% end %>
 
-<%= link_to "Start Round", rounds_path(@game), method: :post %>
+
+
 <!-- hidden field for game id game.last.id-->
 <!-- satisfy round parms(hash) -->
 <!-- new_statement_path -->
