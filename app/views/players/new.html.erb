@@ -12,6 +12,7 @@
 <div class="field">
 <%= f.label :name %>
 <%= f.text_field :name %><p>
+  <%= f.hidden_field :game_id, :value => Game.all.last.id %>
 </div>
 <%= f.submit %>
 <% end %>

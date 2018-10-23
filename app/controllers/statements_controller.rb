@@ -5,13 +5,20 @@ class StatementsController < ApplicationController
   end
 
   def create
-    @statement.create(statement_params)
-    redirect_to round_path(@statement.round)
+  
+    @statement = Statement.create(statement_params)
+
+    # redirect_to round_path(@statement.round)
+    redirect_to round_path(@statement.round_id)
   end
+
+
+
+
 
   private
 
   def statement_params
-    params.require(:statement).require(:content, :answer, :player_id, :round_id)
+    params.require(:statement).permit(:content, :answer, :player_id, :round_id)
   end
 end

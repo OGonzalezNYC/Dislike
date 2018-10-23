@@ -1,0 +1,11 @@
+<h1>Showing statements</h1>
+<ul>
+<% @statements.each do |statement| %>
+<li><%= statement.content %></li>
+<% end %>
+
+</ul>
+<!-- build view in a bit to show statement instances -->
+
+<!-- button to display result of these choices -->
+<%= link_to "Submit Your Answer", rounds_path  %>

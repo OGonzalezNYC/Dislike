@@ -9,9 +9,18 @@ class PlayersController < ApplicationController
   end
 
   def create
-    @player.create(player_params)
-    if Player.all.length == 3
-    redirect_to new_round_path
+
+    @player = Player.create(player_params)
+    if @player.valid?
+      if Player.all.length == 3
+        redirect_to new_round_path
+      else
+        redirect_to new_player_path
+      end
+    else
+      flash[:error] = @player.errors.full_messages
+      redirect_to new_player_path
+    end
   end
 
 
@@ -21,6 +30,7 @@ class PlayersController < ApplicationController
 
 
   def player_params
-    params.require(:player).permit(:name, :points)
+    params.require(:player).permit(:name, :game_id)
   end
+
 end

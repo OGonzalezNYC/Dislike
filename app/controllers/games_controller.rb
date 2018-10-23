@@ -1,9 +1,7 @@
 class GamesController < ApplicationController
 
   def index
-    @game = Game.new
     @games = Game.all
-
   end
 
 
@@ -13,20 +11,24 @@ class GamesController < ApplicationController
 
 
   # def new
-  #   #@game = Game.new
+  #   @game = Game.new
+  #
   # end
 
 
   def create
-    @game = Game.create(game_params)
+    @game = Game.create
+
     redirect_to new_player_path
   end
 
 
   private
 
-  def game_params
-    params.require(:game)#.permit()
-  end
+  # def game_params
+  #    params.require(:game).permit()
+  # end
 
 end
+
+# add logic to destroy when click new game
