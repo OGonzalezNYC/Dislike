@@ -1,5 +1,36 @@
 <h1>Showing statements</h1>
+
+<% @player = Player.find(params[:position] == true) %>
+<h1>Which statements do you think were sincere?</h1>
 <ul>
+<% @player.statements = @round.statements.map do |statement| %>
+<li><%= statement.content %> </li>
+<%= radio_button_tag(:answer, "Sincere.") %>
+<%= label_tag(:true, "I believe this statement was sincere.") %>
+<%= radio_button_tag(:answer, "Insincere") %>
+<%= label_tag(:false, "I believe this statement was insincere.") %>
+<% end %>
+</ul>
+<!-- build view in a bit to show statement instances -->
+<!--  -->
+<%#  @round.statements.each do |statement| %>
+<% #   @player.statements.each do |guess| %>
+<%  #    if statement.content == @guess.content && statement.answer == @guess.answer %>
+<%   #     @player.points += 2 %>
+<%    #  else %>
+<%     #   statement.player.points += 1 %>
+<%      #end %>
+<%    #end %>
+<% #end %>
+
+
+
+
+<!-- button to display result of these choices -->
+<%= link_to "Submit Your Answer", rounds_path  %>
+
+
+<!-- <ul>
 <% @statements.each do |statement| %>
 <li><%= statement.content %></li>
 <% end %>
@@ -8,4 +39,4 @@
 <!-- build view in a bit to show statement instances -->
 
 <!-- button to display result of these choices -->
-<%= link_to "Submit Your Answer", rounds_path  %>
+<%= link_to "Submit Your Answer", rounds_path  %> -->

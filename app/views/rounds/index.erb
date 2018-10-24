@@ -5,11 +5,15 @@
   <li><%= statement.content %><br></li>
   <li><%= statement.answer %><br></li>
   <li><%= statement.player.name %><br></li>
-
-
-
 <% end %>
-
 </ul>
+
+<br><br>
+<% @last_round.points_tally %>
+<br><br>
+<%  @last_round.players.each do |player| %>
+<p> <%= player.name %> , <%= player.points %> </p>
+<% end  %>
+<br><br>
 
 <%= link_to "Start Next Round", new_round_path %>
