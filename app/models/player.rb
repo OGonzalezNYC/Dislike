@@ -5,7 +5,5 @@ class Player < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   belongs_to :game
 
-
-
-
+# @set_position[Player.all.last.id-1]
 end

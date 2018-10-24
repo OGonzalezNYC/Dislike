@@ -1,5 +1,7 @@
 class PlayersController < ApplicationController
 
+  @set = Game.last.set_position
+
   def index
     @players = Player.all
   end
@@ -9,10 +11,12 @@ class PlayersController < ApplicationController
   end
 
   def create
-
     @player = Player.create(player_params)
     if @player.valid?
-      if Player.all.length == 3
+      if Game.last.players.length == 3
+        
+        @random_player = Game.last.players.sample
+        @random_player.update(:position => true)
         redirect_to new_round_path
       else
         redirect_to new_player_path
@@ -30,7 +34,7 @@ class PlayersController < ApplicationController
 
 
   def player_params
-    params.require(:player).permit(:name, :game_id, :position)
+    params.require(:player).permit(:name, :game_id)
   end
 
 end
