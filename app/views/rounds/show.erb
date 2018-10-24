@@ -1,6 +1,6 @@
 <h1>Showing statements</h1>
 
-<% @player = Player.find(params[:position] == true) %>
+<%= @true_player[0].name %>
 <h1>Which statements do you think were sincere?</h1>
 <ul>
 <% @player.statements = @round.statements.map do |statement| %>

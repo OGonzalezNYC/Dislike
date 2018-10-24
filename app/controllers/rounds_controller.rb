@@ -7,6 +7,7 @@ class RoundsController < ApplicationController
   def show
     @round = Round.find(params[:id])
     @statements = @round.statements
+    @true_player = Round.last.true_position
   end
 
   def new

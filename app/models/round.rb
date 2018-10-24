@@ -13,6 +13,19 @@ class Round < ApplicationRecord
          statement.player.points += 1
        end
      end
+   end
   end
-  
+
+  def form_position
+    false_players = Game.last.players.select do |player|
+      !player.position
+    end
+  end
+
+  def true_position
+    true_player = Game.last.players.select do |player|
+      !!player.position
+    end
+  end
+
 end

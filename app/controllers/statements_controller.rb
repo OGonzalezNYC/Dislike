@@ -2,6 +2,7 @@ class StatementsController < ApplicationController
 
   def new
     @statement = Statement.new
+    @form_position = Round.last.form_position
   end
 
   def create
