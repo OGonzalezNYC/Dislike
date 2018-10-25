@@ -1,5 +1,24 @@
-<h1> Welcome to "What I dislike about you" </h1>
 
-<h2> Click: <%= link_to 'Start New Game', startgame_path, method: :post  %>
+  <div class="container-fluid">
+    <div class="">
+      <h1> What I Dislike About You </h1>
+      </div>
+      <div class="">
+        <h3>Game Instructions:</h3>
+        <ul>
+          <li>In each of 6 rounds, one of 3 players is chosen</li>
+          <li>Write a statement - what do you dislike about that chosen player.</li>
+          <li>Write another - try to fool them with a plausible lie.</li>
+          <li>If the player correctly guess the sincerity of the statements, he/she get points.</li>
+          <li>Otherwise, the points are YOURS!</li>
+          <li>In the words of Socrates, "Know thyself." Good luck!</li>
+        </ul>
+      </div>
 
-<h3>Game Instructions:</h3>
+      <div class="">
+        <button type="button" class="btn"><%= link_to "Start New Game", startgame_path, method: :post %></button>
+      </div>
+
+
+
+  </div>
