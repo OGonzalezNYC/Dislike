@@ -4,18 +4,18 @@ class Round < ApplicationRecord
   has_many :players, through: :statements
   has_many :results
 
-  def points_tally
-   @true_player = Game.last.players.where(position: true)
-   self.statements.each do |statement|
-     @true_player.statements.each do |guess|
-       if statement.content == guess.content && statement.answer == @guess.answer
-         @true_player.points += 2
-       else
-         statement.player.points += 1
-       end
-     end
-   end
-  end
+  # def points_tally
+  #  @true_player = Game.last.players.where(position: true)
+  #  self.statements.each do |statement|
+  #    @true_player.statements.each do |guess|
+  #      if statement.content == guess.content && statement.answer == @guess.answer
+  #        @true_player.points += 2
+  #      else
+  #        statement.player.points += 1
+  #      end
+  #    end
+  #  end
+  # end
 
   def form_position
     false_players = Game.last.players.select do |player|

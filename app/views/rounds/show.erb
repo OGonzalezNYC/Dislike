@@ -3,7 +3,7 @@
 <%= @true_player.name %>
 <h1>Which statements do you think were sincere?</h1><p>
 
-<% Round.last.statements.each_with_index do |statement, index| %>
+<% Round.last.statements.shuffle.each_with_index do |statement, index| %>
 
 <% if Round.last.results.exclude?(Round.last.results[index]) %>
 <%= form_for @result do |f| %><br>

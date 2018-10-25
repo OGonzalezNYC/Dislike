@@ -1,7 +1,8 @@
 class ResultsController < ApplicationController
 
   def index
-    @results = Game.last.results
+    results = Game.last.results.shuffle
+    @results = results
   end
 
   def new
@@ -11,8 +12,12 @@ class ResultsController < ApplicationController
     @result = Result.create(result_params)
     # set_points(params) # Before being redirected to results, assign points from ApplicationController
     if Round.last.results.size == 4
+
+      set_points(params)
       redirect_to results_path
     else
+
+      set_points(params)
       redirect_to round_path(Round.last.id)
     end
   end

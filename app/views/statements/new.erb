@@ -18,7 +18,8 @@
   <%= f.submit "Submit statement" %>
   <% end %>
 <% elsif Round.last.statements.where(player_id: @form_position[0].id).size == 1 %>
-  <em>Please Enter statements below:</em>
+<p><b>Player:</b> <%= @form_position[0].name %></p>
+<em>Please Enter statements below:</em>
   <%= form_for @statement do |f| %><br>
   <%= f.label "Dislike Content #2 (Enter false statement here)" %><br>
   <%= f.text_area :content %><br>
