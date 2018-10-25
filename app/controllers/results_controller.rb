@@ -1,8 +1,7 @@
 class ResultsController < ApplicationController
 
   def index
-    results = Game.last.results.shuffle
-    @results = results
+    @results = Game.last.results
   end
 
   def new

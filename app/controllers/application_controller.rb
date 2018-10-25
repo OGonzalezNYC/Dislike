@@ -17,7 +17,6 @@ class ApplicationController < ActionController::Base
     else
       player.update(:points => add_player_point)
     end
-    byebug
 
   end
 

@@ -1,9 +1,15 @@
 <div>
   <% @results.each_with_index do |result, index| %>
 
-  For the statement "<%= Round.last.statements[index].content %>" you chose: <%= result.answer %>
-<p>
+<% if Round.last.statements[index].answer == result.answer%>
+  For the statement "<%= Round.last.statements[index].content %>" you chose: <%= result.answer.to_s %><p>
+  <font color="green">You chose the correct answer for this statement.</font><p>
+  <% else %>
+  For the statement "<%= Round.last.statements[index].content %>" you chose: <%= result.answer.to_s %><p>
+  <font color="red">The correct answer for this statement is: <%= Round.last.statements[index].answer %></font><p>
   <% end %>
+
+<% end %>
 
 </div>
 
