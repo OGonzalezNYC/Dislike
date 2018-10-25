@@ -1,0 +1,24 @@
+<h1>Showing statements</h1>
+
+<%= @true_player.name %>
+<h1>Which statements do you think were sincere?</h1><p>
+
+<% Round.last.statements.each do |statement| %>
+<%= statement.content %>
+<%= form_for @result do |f| %>
+  <%= f.hidden_field :game_id, :value => Game.last.id %>
+  <%= f.hidden_field :round_id, :value => statement.round_id %>
+  <%= f.hidden_field :player_id, :value => statement.player_id %>
+  <%= f.hidden_field :answer, :value => true %>
+  <%= f.submit "Sincere" %>
+  <% end %>
+
+  <%= form_for @result do |f| %>
+    <%= f.hidden_field :game_id, :value => Game.last.id %>
+    <%= f.hidden_field :round_id, :value => statement.round_id %>
+    <%= f.hidden_field :player_id, :value => statement.player_id %>
+    <%= f.hidden_field :answer, :value => false %>
+    <%= f.submit "Insincere" %>
+  <br>
+<% end %>
+<% end %>

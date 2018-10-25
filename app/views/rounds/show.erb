@@ -1,42 +1,23 @@
 <h1>Showing statements</h1>
 
-<%= @true_player[0].name %>
-<h1>Which statements do you think were sincere?</h1>
-<ul>
-<% @player.statements = @round.statements.map do |statement| %>
-<li><%= statement.content %> </li>
-<%= radio_button_tag(:answer, "Sincere.") %>
-<%= label_tag(:true, "I believe this statement was sincere.") %>
-<%= radio_button_tag(:answer, "Insincere") %>
-<%= label_tag(:false, "I believe this statement was insincere.") %>
+<%= @true_player.name %>
+<h1>Which statements do you think were sincere?</h1><p>
+
+<% Round.last.statements.each_with_index do |statement, index| %>
+
+<% if Round.last.results.exclude?(Round.last.results[index]) %>
+<%= form_for @result do |f| %><br>
+  <b><%= statement.content %></b><p>
+  <%= f.label :answer, "Sincere", :value => true %>
+  <%= f.radio_button :answer, true %>
+  <%= f.label :answer, "Not Sincere", :value => false %>
+  <%= f.radio_button :answer, false %>
+  <%= f.hidden_field :game_id, :value => Game.last.id %>
+  <%= f.hidden_field :round_id, :value => statement.round_id %>
+  <%= f.hidden_field :player_id, :value => statement.player_id %>
+  <%= f.hidden_field :statement_id, :value => statement.id %>
+  <%= f.submit %>
+  <p>
+    <% end %>
 <% end %>
-</ul>
-<!-- build view in a bit to show statement instances -->
-<!--  -->
-<%#  @round.statements.each do |statement| %>
-<% #   @player.statements.each do |guess| %>
-<%  #    if statement.content == @guess.content && statement.answer == @guess.answer %>
-<%   #     @player.points += 2 %>
-<%    #  else %>
-<%     #   statement.player.points += 1 %>
-<%      #end %>
-<%    #end %>
-<% #end %>
-
-
-
-
-<!-- button to display result of these choices -->
-<%= link_to "Submit Your Answer", rounds_path  %>
-
-
-<!-- <ul>
-<% @statements.each do |statement| %>
-<li><%= statement.content %></li>
 <% end %>
-
-</ul>
-<!-- build view in a bit to show statement instances -->
-
-<!-- button to display result of these choices -->
-<%= link_to "Submit Your Answer", rounds_path  %> -->

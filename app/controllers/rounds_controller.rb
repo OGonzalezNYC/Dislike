@@ -5,12 +5,19 @@ class RoundsController < ApplicationController
   end
 
   def show
+
     @round = Round.find(params[:id])
     @statements = @round.statements
-    @true_player = Round.last.true_position
+    @true_player = Round.last.true_position[0]
+    @result = Result.new
+
+    #byebug
   end
 
   def new
+    Game.last.players.each {|player| player.update(:position => false)}
+    @random_player = Game.last.players.sample
+    @random_player.update(:position => true)
     @round = Round.new
     @current_game = Game.current_game
     @round_check = Game.round_check

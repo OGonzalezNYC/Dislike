@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   resources :players, only: [:index, :new, :create]
   resources :rounds, only: [:index, :show, :new, :create]
   resources :statements, only: [:new, :create]
+  resources :results
   root 'games#index'
 
   post '/games', to: 'games#create', as: '/startgame'
   # get '/round', to: 'rounds#show', as: '/startround'
-
+  
 
 end

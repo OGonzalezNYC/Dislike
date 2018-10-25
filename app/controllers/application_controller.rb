@@ -4,4 +4,7 @@ class ApplicationController < ActionController::Base
     Round.create(round_params)
   end
 
+  # def set_points(params)
+  # end
+
 end

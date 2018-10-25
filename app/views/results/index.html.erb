@@ -1,0 +1,12 @@
+<div>
+  <% @results.each_with_index do |result, index| %>
+
+  For the statement "<%= Round.last.statements[index].content %>" you chose: <%= result.answer %>
+<p>
+  <% end %>
+
+</div>
+
+<div >
+  <%= button_to "Next Round", new_round_path, method: :get %>
+</div>

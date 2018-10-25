@@ -10,7 +10,11 @@ class StatementsController < ApplicationController
     @statement = Statement.create(statement_params)
     if @statement.valid?
     # redirect_to round_path(@statement.round)
+      if Round.last.statements.size == 4
       redirect_to round_path(@statement.round_id)
+    else
+      redirect_to new_statement_path
+    end
     else
       flash[:error] = @statement.errors.full_messages
       redirect_to new_statement_path

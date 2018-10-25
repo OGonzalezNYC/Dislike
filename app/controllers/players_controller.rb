@@ -1,7 +1,5 @@
 class PlayersController < ApplicationController
 
-  @set = Game.last.set_position
-
   def index
     @players = Player.all
   end
@@ -14,9 +12,8 @@ class PlayersController < ApplicationController
     @player = Player.create(player_params)
     if @player.valid?
       if Game.last.players.length == 3
-        
-        @random_player = Game.last.players.sample
-        @random_player.update(:position => true)
+        # @random_player = Game.last.players.sample
+        # @random_player.update(:position => true)
         redirect_to new_round_path
       else
         redirect_to new_player_path

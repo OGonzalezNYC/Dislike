@@ -30,5 +30,3 @@ class GamesController < ApplicationController
   # end
 
 end
-
-# add logic to destroy when click new game
