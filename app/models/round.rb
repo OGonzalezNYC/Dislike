@@ -4,6 +4,7 @@ class Round < ApplicationRecord
   has_many :players, through: :statements
   has_many :results
 
+
   # def points_tally
   #  @true_player = Game.last.players.where(position: true)
   #  self.statements.each do |statement|

@@ -1,18 +1,43 @@
+
 <div>
+
+<% if Game.last.status == true %>
+
   <% @results.each_with_index do |result, index| %>
 
-<% if Round.last.statements[index].answer == result.answer%>
-  For the statement "<%= Round.last.statements[index].content %>" you chose: <%= result.answer.to_s %><p>
-  <font color="green">You chose the correct answer for this statement.</font><p>
-  <% else %>
-  For the statement "<%= Round.last.statements[index].content %>" you chose: <%= result.answer.to_s %><p>
-  <font color="red">The correct answer for this statement is: <%= Round.last.statements[index].answer %></font><p>
-  <% end %>
+    <% if Rails.application.config.my_config[index].answer == result.answer %>
+      <b>For the statement "<%= Rails.application.config.my_config[index].content %>" you chose: <%= result.answer.to_s %></b><p>
+        <font color="green">You chose the correct answer for this statement. This was a sincere statement</font><p>
+    <% else %>
+      <b>For the statement "<%= Rails.application.config.my_config[index].content %>" you chose: <%= result.answer.to_s %></b><p>
+        <font color="red">This was an insincere statement, The correct answer for this statement is: <%= Rails.application.config.my_config[index].answer %></font><p>
+    <% end %>
 
 <% end %>
 
 </div>
 
 <div >
-  <%= button_to "Next Round", new_round_path, method: :get %>
+      <% if Game.last.rounds.size != 6 %>
+        <%= button_to "Next Round", new_round_path, method: :get %>
+      <% end %>
+
+<% else %>
+      <% Game.last.players.each do |player| %>
+      <%= player.name %> totaled <%= player.points %> points <p>
+<% end %>
+<%= link_to "New Game", games_path %>
+  <p>
+    <h3> Here's a list of all Sincere statements! </h3>
+      <% Game.last.rounds.each do |round| %>
+            <% round.statements.where(answer: true).each do |statement| %><p>
+              <%= statement.content %>
+            <% end %>
+      <% end %>
+
+<% end %>
 </div>
+
+ <% if Game.last.rounds.size == 6 && Game.last.status == true %>
+ <%= link_to "Show Results!", endgame_path, method: :get %>
+ <% end %>

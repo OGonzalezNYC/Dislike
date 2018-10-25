@@ -10,6 +10,13 @@ class RoundsController < ApplicationController
     @statements = @round.statements
     @true_player = Round.last.true_position[0]
     @result = Result.new
+    if @round.shuffled == false
+      Rails.application.config.my_config.clear
+      Round.last.statements.shuffle.each {|s| Rails.application.config.my_config << s }
+      @shuffled_array = Rails.application.config.my_config
+      @round.update(shuffled: true)
+    end
+      @shuffled_array = Rails.application.config.my_config
 
     #byebug
   end
@@ -37,6 +44,6 @@ class RoundsController < ApplicationController
 
 
   def round_params
-    params.require(:round).permit(:game_id)
+    params.require(:round).permit(:game_id, :shuffled)
   end
 end
