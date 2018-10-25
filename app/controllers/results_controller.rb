@@ -1,7 +1,15 @@
 class ResultsController < ApplicationController
 
   def index
-    @results = Game.last.results
+    @results = Game.last.rounds.last.results
+    @game = Game.last
+  end
+
+  def endgame
+    byebug
+    Game.last.update(status: false)
+    byebug
+    redirect_to results_path
   end
 
   def new
