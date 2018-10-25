@@ -1,18 +1,21 @@
-<h1> Create a new player! </h1>
+<div class="container-fluid">
 
-<%= form_for(@player) do |f| %>
+  <h1> Enter Player Name </h1>
 
-<% if flash[:error] %>
-<% flash[:error].each do |error| %>
-<b>* <%= error %></b><p>
-<% end %>
-<% end %>
-<p>
+  <%= form_for(@player) do |f| %>
 
-<div class="field">
-<%= f.label :name %>
-<%= f.text_field :name %><p>
-  <%= f.hidden_field :game_id, :value => Game.all.last.id %>
-    </div>
-<%= f.submit %>
-<% end %>
+  <% if flash[:error] %>
+  <% flash[:error].each do |error| %>
+  <b>* <%= error %></b><p>
+    <% end %>
+    <% end %>
+    <p>
+
+      <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name %><p>
+          <%= f.hidden_field :game_id, :value => Game.all.last.id %>
+        </div>
+        <%= f.submit %>
+        <% end %>
+</div>
