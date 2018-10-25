@@ -39,6 +39,5 @@
 </div>
 
  <% if Game.last.rounds.size == 6 && Game.last.status == true %>
- <% byebug %>
  <%= link_to "Show Results!", endgame_path, method: :get %>
  <% end %>

@@ -6,9 +6,7 @@ class ResultsController < ApplicationController
   end
 
   def endgame
-    byebug
     Game.last.update(status: false)
-    byebug
     redirect_to results_path
   end
 
