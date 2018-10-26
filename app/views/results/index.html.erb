@@ -1,46 +1,54 @@
 
 <div class="container-fluid animated zoomIn">
 
+
 <% if Game.last.status == true %>
 
   <% @results.each_with_index do |result, index| %>
 
     <% if Rails.application.config.my_config[index].answer == result.answer %>
-      <b>For:</b> "<%= Rails.application.config.my_config[index].content %>"<br>
-      <b><%= @true_player.name.upcase %> guessed: </b><%= result.answer.to_s %><br>
-      <font color="green">You chose the correct answer. Someone genuinely dislikes this about you!</font><br><br>
+      <b>For:<span style="color:#e65c00">"<%= Rails.application.config.my_config[index].content.upcase %>"</span><br>
+      <b><%= @true_player.name.upcase %> guessed: </b><%= result.answer.to_s %><br><br>
+      <font color="blue">You chose the correct answer. Someone genuinely dislikes this about you!</font><br><br>
+      </b>
     <% else %>
-      <b>For:</b> "<%= Rails.application.config.my_config[index].content %>"<br>
+      <b>For:<span style="color:#e65c00">"<%= Rails.application.config.my_config[index].content.upcase %>"<br></span>
       <b><%= @true_player.name.upcase %> guessed: </b><%= result.answer.to_s %><br>
       <font color="red">This was an insincere statement. The correct answer for this statement is: <%= Rails.application.config.my_config[index].answer %></font><br><br>
+      </b>
     <% end %>
 
 <% end %>
 
-      <% if Game.last.rounds.size != 6 %>
-        <div class="animated jackInTheBox"><%= button_to "Next Round", new_round_path, method: :get %></div>
+      <% if Game.last.rounds.size != 3 %>
+        <div class="animated jackInTheBox"><%= button_to "Next Round", new_round_path, method: :get, :class => 'cool' %></div>
       <% end %>
 
 <% else %>
       <% Game.last.players.each do |player| %>
-      | <b><%= player.name.upcase %>:</b> <%= player.points %> points |
+      |<span style="color:#e65c00" <b><%= player.name.upcase %>:</b></span> <%= player.points %> points |
 <% end %>
-  <div class="animated jackInTheBox"><%= link_to "New Game", games_path %></div>
-
+<br><br>
+  <div class="animated jackInTheBox"><%= button_to "New Game", games_path, method: :get, :class => 'cool' %></div>
+<br>
     <h5> Here's a list of all genuine dislikes! </h5>
+    <ul>
+
       <% Game.last.rounds.each do |round| %>
-            <% round.statements.where(answer: true).each do |statement| %><p>
-              <%= statement.content %>
-            <% end %>
-      <% end %>
+      <% round.statements.where(answer: true).each do |statement| %><p>
+        <li><%= statement.content %></li>
+        <% end %>
+        <% end %>
+    </ul>
 
 <% end %>
 
 
- <% if Game.last.rounds.size == 6 && Game.last.status == true %>
+ <% if Game.last.rounds.size == 3 && Game.last.status == true %>
    <div class="animated jackInTheBox">
-     <button type="button" class="btn"><%= link_to "Show Results!", endgame_path, method: :get %></button>
+     <%= button_to "Show Results!", endgame_path, method: :get, :class => 'cool' %>
    </div>
  <% end %>
+
 
 </div>

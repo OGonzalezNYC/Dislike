@@ -1,22 +1,24 @@
 <div class="container-fluid">
 
-  <h3 class="animated pulse"><%= @true_player.name.upcase %>, what do you think?</h3>
-
+  <h4 class="animated pulse"><%= @true_player.name.upcase %>, what do you think?</h4>
+<br>
     <% @shuffled_array.each_with_index do |statement, index| %>
 
     <% if Round.last.results.exclude?(Round.last.results[index]) %>
     <div class="animated pulse">
     <%= form_for @result do |f| %><br>
-    <b><%= statement.content %></b><p>
+      <span style="color:#006bb3"<b>"<%= statement.content.upcase %>"</b><p></span>
+        <span style="color:black">
       <%= f.label :answer, "Sincere", :value => true %>
       <%= f.radio_button :answer, true %>
       <%= f.label :answer, "Not Sincere", :value => false %>
       <%= f.radio_button :answer, false %>
+      </span>
       <%= f.hidden_field :game_id, :value => Game.last.id %>
       <%= f.hidden_field :round_id, :value => statement.round_id %>
       <%= f.hidden_field :player_id, :value => statement.player_id %>
       <%= f.hidden_field :statement_id, :value => statement.id %>
-      <%= f.submit "Submit" %>
+      <%= f.submit "Submit", :class => 'cool' %>
       </div>
 
       <p>

@@ -8,7 +8,7 @@ class Game < ApplicationRecord
   end
 
   def self.round_check
-    Game.all.last.rounds.size == 6
+    Game.all.last.rounds.size == 3
   end
 
   # def self.set_points
