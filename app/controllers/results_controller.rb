@@ -3,6 +3,7 @@ class ResultsController < ApplicationController
   def index
     @results = Game.last.rounds.last.results
     @game = Game.last
+    @true_player = Round.last.true_position[0]
   end
 
   def endgame

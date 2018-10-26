@@ -3,6 +3,7 @@ class StatementsController < ApplicationController
   def new
     @statement = Statement.new
     @form_position = Round.last.form_position
+    @true_player = Round.last.true_position[0]
   end
 
   def create

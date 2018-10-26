@@ -16,7 +16,22 @@
 
 
 .bg {
-  background-image: url(welcome.jpg);
+  background-image: url(tv.png);
   background-repeat: no-repeat;
   background-size: cover
+}
+
+.cuscontainer {
+  margin-left: 20%;
+  margin-right: 25%;
+  margin-top: 12%;
+  margin-bottom: 15%;
+}
+
+.zoomInRight {
+  animation-delay: 1s;
+}
+
+.jackInTheBox {
+  animation-delay: 1.5s;
 }

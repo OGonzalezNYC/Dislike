@@ -1,4 +1,7 @@
-<h1>Enter Dislike Statements</h1>
+<div class="container-fluid">
+
+
+<h3 class="animated zoomIn">What do you (and don't you) dislike about the victim?</h3>
 <!-- @player.name -->
 <% if flash[:error] %>
   <% flash[:error].each do |error| %>
@@ -6,51 +9,61 @@
   <% end %>
 <% end %>
 
-<% if Round.last.statements.where(player_id: @form_position[0].id).size < 1 %>
-<p><b>Player:</b> <%= @form_position[0].name %></p>
-<em>Please Enter statements below:</em>
-<%= form_for @statement do |f| %><br>
-  <%= f.label "Dislike Content #1 (Enter true statement here)" %><br>
-  <%= f.text_area :content %><br>
+  <% if Round.last.statements.where(player_id: @form_position[0].id).size < 1 %>
+  <div class="animated zoomInRight">
+  <p><b>Player:</b> <%= @form_position[0].name %></p>
+  <em>Please Enter statements below:</em>
+  <%= form_for @statement do |f| %><br>
+  <b><%= f.label "What I dislike about"%> <%= @true_player.name.upcase + ":" %></b><br>
+  <%= f.text_area :content, :placeholder => "Enter True Statement" %><br>
   <%= f.hidden_field :answer, :value => true %>
   <%= f.hidden_field :player_id, :value => @form_position[0].id %>
   <%= f.hidden_field :round_id, :value => Game.last.rounds.last.id %>
-  <%= f.submit "Submit statement" %>
+  </div>
+  <div class="animated jackInTheBox"><%= f.submit "Submit Statement" %></div>
   <% end %>
 <% elsif Round.last.statements.where(player_id: @form_position[0].id).size == 1 %>
+<div class="animated zoomInRight">
 <p><b>Player:</b> <%= @form_position[0].name %></p>
 <em>Please Enter statements below:</em>
   <%= form_for @statement do |f| %><br>
-  <%= f.label "Dislike Content #2 (Enter false statement here)" %><br>
-  <%= f.text_area :content %><br>
+  <b><%= f.label "What I dislike about"%> <%= @true_player.name.upcase + ":" %></b><br>
+  <%= f.text_area :content, :placeholder => "Enter False Statement" %><br>
   <%= f.hidden_field :answer, :value => false %>
   <%= f.hidden_field :player_id, :value => @form_position[0].id %>
   <%= f.hidden_field :round_id, :value => Game.last.rounds.last.id %>
-  <%= f.submit "Submit statement" %>
+  </div>
+  <div class="animated jackInTheBox"><%= f.submit "Submit Statement" %></div>
   <% end %>
 <% end %>
 <br><br>
 
 <% if Round.last.statements.where(player_id: @form_position[1].id).size < 1 %>
+<div class="animated zoomInRight">
 <p><b>Player:</b> <%= @form_position[1].name %></p>
 <em>Please Enter statements below:</em>
 <%= form_for @statement do |f| %><br>
-  <%= f.label "Dislike Content #1 (Enter true statement here)" %><br>
-  <%= f.text_area :content %><br>
+  <b><%= f.label "What I dislike about"%> <%= @true_player.name.upcase + ":" %></b><br>
+  <%= f.text_area :content, :placeholder => "Enter True Statement" %><br>
   <%= f.hidden_field :answer, :value => true %>
   <%= f.hidden_field :player_id, :value => @form_position[1].id %>
   <%= f.hidden_field :round_id, :value => Game.last.rounds.last.id %>
-  <%= f.submit "Submit statement" %>
+  </div>
+  <div class="animated jackInTheBox"><%= f.submit "Submit Statement" %></div>
   <% end %>
 <% elsif Round.last.statements.where(player_id: @form_position[1].id).size == 1 %>
+  <div class="animated zoomInRight">
   <p><b>Player:</b> <%= @form_position[1].name %></p>
   <em>Please Enter statements below:</em>
   <%= form_for @statement do |f| %><br>
-  <%= f.label "Dislike Content #2 (Enter false statement here)" %><br>
-  <%= f.text_area :content %><br>
+  <b><%= f.label "What I dislike about"%> <%= @true_player.name.upcase + ":" %></b><br>
+  <%= f.text_area :content, :placeholder => "Enter False Statement" %><br>
   <%= f.hidden_field :answer, :value => false %>
   <%= f.hidden_field :player_id, :value => @form_position[1].id %>
   <%= f.hidden_field :round_id, :value => Game.last.rounds.last.id %>
-  <%= f.submit "Submit statement" %>
+  </div>
+  <div class="animated jackInTheBox"><%= f.submit "Submit Statement" %></div>
 <% end %>
 <% end %>
+
+</div>

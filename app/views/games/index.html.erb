@@ -1,21 +1,22 @@
 
-  <div class="container-fluid">
+  <div class="container-fluid" >
     <div class="">
-      <h1> What I Dislike About You </h1>
+      <h1 class="animated zoomIn"> What I Dislike About You </h1>
       </div>
-      <div class="">
-        <h3>Game Instructions:</h3>
-        <ul>
-          <li>In each of 6 rounds, one of 3 players is chosen</li>
-          <li>Write a statement - what do you dislike about that chosen player.</li>
+      <div class="animated zoomInRight">
+        <h3 class="">Game Instructions:</h3>
+        <ul class="">
+          <li>In each of 6 rounds, one of 3 players is randomly chosen as the victim.</li>
+          <li>Write a statement - what do you honestly dislike about the victim?</li>
           <li>Write another - try to fool them with a plausible lie.</li>
-          <li>If the player correctly guess the sincerity of the statements, he/she get points.</li>
+          <li>If the victim correctly guess the sincerity of the statements, he/she gets points.</li>
           <li>Otherwise, the points are YOURS!</li>
+          <li>Either way, the victim will never know exactly who wrote what!</li>
           <li>In the words of Socrates, "Know thyself." Good luck!</li>
         </ul>
       </div>
 
-      <div class="">
+      <div class="animated jackInTheBox">
         <button type="button" class="btn"><%= link_to "Start New Game", startgame_path, method: :post %></button>
       </div>
 
