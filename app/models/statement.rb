@@ -4,6 +4,8 @@ class Statement < ApplicationRecord
 
   validates :content, presence: true
   validates :player_id, presence: true
+  
+
   # validate :correct_num_answers
 
   # def correct_num_answers

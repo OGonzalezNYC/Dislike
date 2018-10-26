@@ -3,26 +3,33 @@
 <div class="animated zoomIn">
   <h3>Players, are you ready?!</h3>
 </div>
-<div class="animated zoomInRight">
-  <% Game.last.players.each do |player| %>
-  <%= player.name %><br>
-  <% end %>
-</div>
+<br>
 <br>
 
+
+
+<div class="animated zoomInRight">
+  <ul>
+    <% Game.last.players.each do |player| %>
+    <li style="color:blue;"><b><%= player.name.upcase %></b></li><br>
+    <% end %>
+  </ul>
+</div>
+<br>
+<br>
 <div class="animated jackInTheBox">
   <% if !@round_check %>
   <%= form_for @round do |f| %>
   <% if @current_game == 0 %>
   <%= f.hidden_field :game_id, :value => Game.all.last.id %>
-  <%= f.submit "Start New Game"%>
+  <%= f.submit "Start New Game", :class => 'cool'%>
   <% else %>
   <%= f.hidden_field :game_id, :value => Game.all.last.id %>
-  <%= f.submit "Start New Round" %>
+  <%= f.submit "Start New Round", :class => 'cool' %>
   <% end %>
   <% end %>
   <% else %>
-  <%= button_to "Start New Game", games_path, method: :get %>
+  <%= button_to "Start New Game", games_path, method: :get, :class => 'cool' %>
   <% end %>
 
 </div>
