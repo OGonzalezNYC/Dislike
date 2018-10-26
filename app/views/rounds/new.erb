@@ -1,19 +1,32 @@
-#show all players in the round
-#needs a start button to direct to statments form
+<div class="container-fluid">
 
-<% if !@round_check %>
+<div class="animated zoomIn">
+  <h3>Players, are you ready?!</h3>
+</div>
+<div class="animated zoomInRight">
+  <% Game.last.players.each do |player| %>
+  <%= player.name %><br>
+  <% end %>
+</div>
+<br>
+
+<div class="animated jackInTheBox">
+  <% if !@round_check %>
   <%= form_for @round do |f| %>
-    <% if @current_game == 0 %>
-      <%= f.hidden_field :game_id, :value => Game.all.last.id %>
-      <%= f.submit "Start Game"%>
-    <% else %>
-      <%= f.hidden_field :game_id, :value => Game.all.last.id %>
-      <%= f.submit "Start New Round" %>
-    <% end %>
+  <% if @current_game == 0 %>
+  <%= f.hidden_field :game_id, :value => Game.all.last.id %>
+  <%= f.submit "Start New Game"%>
+  <% else %>
+  <%= f.hidden_field :game_id, :value => Game.all.last.id %>
+  <%= f.submit "Start New Round" %>
+  <% end %>
   <% end %>
   <% else %>
-<%= button_to "Start New Game", games_path, method: :get %>
-<% end %>
+  <%= button_to "Start New Game", games_path, method: :get %>
+  <% end %>
+
+</div>
+</div>
 
 
 
