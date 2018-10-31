@@ -1,0 +1,24 @@
+<div class="container-fluid">
+
+  <h3 class="animated zoomIn"> Enter Player Name </h3>
+  <br>
+  <%= form_for(@player) do |f| %>
+  <% if flash[:error] %>
+  <% flash[:error].each do |error| %>
+  <b>* <%= error %></b><p>
+    <% end %>
+    <% end %>
+    <p>
+
+      <div class="field animated zoomInRight">
+        <%= f.label :name %>
+        <%= f.text_field :name %><p>
+        <%= f.hidden_field :game_id, :value => Game.all.last.id %>
+        </div>
+        <div class="animated jackInTheBox">
+          <%= f.submit "Submit", :class => 'cool'%>
+        </div>
+
+        <% end %>
+      </div>
+</div>

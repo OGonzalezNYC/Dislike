@@ -1,0 +1,44 @@
+<h1>Enter Statements</h1>
+<!-- @player.name -->
+<% if flash[:error] %>
+  <% flash[:error].each do |error| %>
+    <%= error %>
+  <% end %>
+<% end %>
+
+<h3><%= @form_position[0].name %> Please Enter statements below</h3>
+<%= form_for @statement do |f| %>
+  <%= f.label "Dislike Content #1 (Enter true statement here)" %><br>
+  <%= f.text_area :content %><br>
+  <%= f.hidden_field :answer, :value => true %>
+  <%= f.hidden_field :player_id, :value => @form_position[0].id %>
+  <br><br>
+  <%= f.label "Dislike Content #2 (Enter false statement here)" %><br>
+  <%= f.text_area :content %><br>
+  <%= f.hidden_field :answer, :value => false %>
+  <%= f.hidden_field :player_id, :value => @form_position[0].id %>
+
+  <%= f.label "Submitting Player:" %><br>
+  <%= f.hidden_field :player_id, :value => %>
+  <%= f.collection_select :player_id, Player.all, :id, :name %>
+
+  <%= f.submit "Submit statements" %>
+<% end %>
+
+<h3><%= @form_position[1].name %> Please Enter statements below</h3>
+<%= form_for @statement do |f| %>
+  <%= f.label "Dislike Content #1 (Enter true statement here)" %><br>
+  <%= f.text_area :content %><br>
+  <%= f.hidden_field :answer, :value => true %>
+  <%= f.hidden_field :player_id, :value => @form_position[1].id %>
+  <br><br>
+  <%= f.label "Dislike Content #2 (Enter false statement here)" %><br>
+  <%= f.text_area :content %><br>
+  <%= f.hidden_field :answer, :value => false %>
+  <%= f.hidden_field :player_id, :value => @form_position[1].id %>
+  <%= f.label "Submitting Player:" %><br>
+  <%= f.hidden_field :player_id, :value => %>
+  <%= f.collection_select :player_id, Player.all, :id, :name %>
+
+  <%= f.submit "Submit statements" %>
+<% end %>

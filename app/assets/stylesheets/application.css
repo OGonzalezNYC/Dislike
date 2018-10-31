@@ -13,3 +13,51 @@
  *= require_tree .
  *= require_self
  */
+
+
+.bg {
+  background-image: url(tv1.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.1em;
+  text-shadow: 3px 3px 10px black, 3px 3px 3px white;
+  color: black;
+}
+
+
+.cuscontainer {
+  margin-left: 18%;
+  margin-right: 32%;
+  margin-top: 12%;
+  margin-bottom: 15%;
+}
+
+.zoomInRight {
+  animation-delay: 1s;
+}
+
+.jackInTheBox {
+  animation-delay: 1.5s;
+}
+
+.cool {
+  padding: 5px 10px;
+  font-size: 1.1em !important;
+  text-align: center !important;
+  cursor: pointer;
+  outline: none;
+  color: white !important;
+  background-color: #3366ff !important;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 5px black;
+}
+
+.cool:hover {background-color: blue !important}
+
+.cool:active {
+  background-color: #b3c6ff !important;
+  box-shadow: 0 5px #666 !important;
+  transform: translateY(4px);
+}
